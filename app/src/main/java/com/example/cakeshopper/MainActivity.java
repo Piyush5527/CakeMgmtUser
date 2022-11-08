@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
     FirebaseFirestore db;
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +26,16 @@ public class MainActivity extends AppCompatActivity {
         // in this case it is algorithm fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Home()).commit();
 
-        db=FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        if(getIntent().getBooleanExtra("LOGOUT",false))
+        {
+            finish();
+        }
 
     }
+
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener = item -> {
         // By using switch we can easily get
         // the selected fragment
@@ -38,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
             selectedFragment = new Cakes();
         } else if (itemId == R.id.Cart) {
             selectedFragment = new Cart();
+        } else if (itemId == R.id.ManageAccount) {
+            selectedFragment=new ManageAccount();
         }
         // It will help to replace the
         // one fragment to other.

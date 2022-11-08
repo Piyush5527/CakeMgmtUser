@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="this_is_home_page">This is Home Page</string>
     <string name="already_have_account_sign_in">Already have account? Sign in</string>
+    <string name="sign_in">Sign In</string>
+    <string name="don_t_have_account_signup">Don\'t Have Account? SignUp</string>
+    <string name="forgot_password">Forgot Password</string>
 </resources>

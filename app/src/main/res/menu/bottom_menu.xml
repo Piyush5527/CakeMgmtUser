@@ -3,15 +3,20 @@
     <item
         android:id="@+id/Home"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Algorithm" />
+        android:title="Home" />
 
     <item
         android:id="@+id/Cakes"
         android:icon="@drawable/ic_baseline_cake_24"
-        android:title="Course" />
+        android:title="Cakes" />
 
     <item
         android:id="@+id/Cart"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="Cart" />
+    <item
+        android:id="@+id/ManageAccount"
+        android:icon="@drawable/ic_baseline_manage_accounts_24"
+        android:title="Account" />
+
 </menu>
