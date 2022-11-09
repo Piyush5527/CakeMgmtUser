@@ -50,8 +50,8 @@ public class FirstLoadingPage extends AppCompatActivity {
                 public void onFinish() {
                     if (isNetworkConnected() && isUserLoggedIn()) {
 //                        Toast.makeText(FirstLoadingPage.this, "Net connected and logged in", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                        Intent intent=new Intent(FirstLoadingPage.this,MainActivity.class);
+//                        progressBar.setVisibility(View.GONE);
+                        Intent intent=new Intent(FirstLoadingPage.this,PasswordAuthPage.class);
                         startActivity(intent);
                         finish();
                     } else if (isNetworkConnected()==true && isUserLoggedIn()==false) {

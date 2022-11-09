@@ -20,7 +20,10 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 
 public class RegistrationPage extends AppCompatActivity {
@@ -28,6 +31,7 @@ public class RegistrationPage extends AppCompatActivity {
     Button signUp;
     FirebaseAuth fAuth;
     FirebaseUser user;
+    FirebaseFirestore db;
     TextView loginRedirect;
     ConstraintLayout layout;
     ProgressBar progressBar;
@@ -44,11 +48,9 @@ public class RegistrationPage extends AppCompatActivity {
         layout=findViewById(R.id.layout);
         progressBar=findViewById(R.id.progress);
         loginRedirect=findViewById(R.id.signInPage);
-
+        db=FirebaseFirestore.getInstance();
         progressBar.setVisibility(View.GONE);
-
         fAuth=FirebaseAuth.getInstance();
-
         user=FirebaseAuth.getInstance().getCurrentUser();
 
         loginRedirect.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +85,7 @@ public class RegistrationPage extends AppCompatActivity {
             name=userName.getText().toString();
             email=userEmail.getText().toString();
             password=userPassword.getText().toString();
-            pin=userPassword.getText().toString();
+            pin=userPin.getText().toString();
 
             fAuth.createUserWithEmailAndPassword(email,password)
                     .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -92,6 +94,15 @@ public class RegistrationPage extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             Snackbar.make(layout,"Successful",Snackbar.LENGTH_SHORT).show();
                             try {
+                                Map<String,Object> newUser=new HashMap<>();
+                                newUser.put("Name",name);
+                                newUser.put("Email",email);
+                                newUser.put("Pin",pin);
+
+                                user= fAuth.getCurrentUser();
+
+                                db.collection("UsersData").document(user.getUid()).set(newUser);
+
                                 Thread.sleep(1000);
                                 Intent intent=new Intent(RegistrationPage.this,MainActivity.class);
                                 startActivity(intent);

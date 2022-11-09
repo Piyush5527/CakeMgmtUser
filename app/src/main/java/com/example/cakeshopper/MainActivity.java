@@ -1,8 +1,10 @@
 package com.example.cakeshopper;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        // as soon as the application opens the first
-        // fragment should be shown to the user
-        // in this case it is algorithm fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new Home()).commit();
 
         db = FirebaseFirestore.getInstance();
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         {
             finish();
         }
-
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener = item -> {
