@@ -9,14 +9,17 @@
         android:id="@+id/Cakes"
         android:icon="@drawable/ic_baseline_cake_24"
         android:title="Cakes" />
-
     <item
-        android:id="@+id/Cart"
-        android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="Cart" />
+        android:id="@+id/PreviousOrders"
+        android:icon="@drawable/ic_baseline_history_24"
+        android:title="History" />
     <item
         android:id="@+id/ManageAccount"
         android:icon="@drawable/ic_baseline_manage_accounts_24"
         android:title="Account" />
+    <item
+        android:id="@+id/AboutStore"
+        android:icon="@drawable/ic_baseline_store_24"
+        android:title="AboutStore" />
 
 </menu>

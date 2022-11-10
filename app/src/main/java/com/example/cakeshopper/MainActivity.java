@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
             selectedFragment = new Home();
         } else if (itemId == R.id.Cakes) {
             selectedFragment = new Cakes();
-        } else if (itemId == R.id.Cart) {
-            selectedFragment = new Cart();
         } else if (itemId == R.id.ManageAccount) {
             selectedFragment=new ManageAccount();
         }
