@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if(getIntent().getBooleanExtra("LOGOUT",false))
-        {
+        if (getIntent().getBooleanExtra("LOGOUT", false)) {
             finish();
         }
     }
@@ -45,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.Cakes) {
             selectedFragment = new Cakes();
         } else if (itemId == R.id.ManageAccount) {
-            selectedFragment=new ManageAccount();
+            selectedFragment = new ManageAccount();
+        } else if (itemId == R.id.AboutStore) {
+            selectedFragment = new AboutShop();
         }
         // It will help to replace the
         // one fragment to other.
