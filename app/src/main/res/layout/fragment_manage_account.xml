@@ -1,20 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="15sp"
+    android:id="@+id/layout"
     tools:context=".ManageAccount">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is account page" />
-    <Button
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/LogoutButton"
-        />
+        android:layout_marginTop="15sp"
+        android:gravity="center"
+        android:text="Personal Account"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_marginTop="20sp"
+        android:hint="Name"
+        android:textColorHint="@color/black">
+
+        <EditText
+            android:id="@+id/Name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxLength="25"
+            android:background="#30ffffff"
+            android:backgroundTint="@color/col2"
+            android:padding="10sp"
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_marginTop="20sp"
+        android:hint="Email"
+        android:textColorHint="@color/black">
+
+        <EditText
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxLength="25"
+            android:background="#30ffffff"
+            android:focusable="false"
+            android:editable="false"
+            android:backgroundTint="@color/col2"
+            android:padding="10sp"
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_marginTop="15sp"
+        android:hint="Phone No."
+        android:textColorHint="@color/black">
+
+        <EditText
+            android:id="@+id/PhoneNo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#30ffffff"
+            android:backgroundTint="@color/col2"
+            android:inputType="number"
+            android:maxLength="10"
+            android:padding="10sp"
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_marginTop="15sp"
+        android:hint="Address"
+        android:textColorHint="@color/black">
+
+        <EditText
+            android:id="@+id/Address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#30ffffff"
+            android:backgroundTint="@color/col2"
+            android:maxLength="30"
+            android:padding="10sp"
+            android:textColor="@color/black"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:layout_marginTop="20sp"
+        android:hint="Pin 4 Digit"
+        android:textColorHint="@color/black"
+        >
+
+        <EditText
+            android:id="@+id/pin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#30ffffff"
+            android:inputType="numberPassword"
+            android:backgroundTint="@color/col2"
+            android:maxLength="4"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/LogoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/errorRed"
+            android:text="Logout" />
+
+        <Button
+            android:id="@+id/Update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:elevation="5sp"
+            android:backgroundTint="@color/successGreen"
+            android:text="Update Details" />
+    </LinearLayout>
+
+</LinearLayout>

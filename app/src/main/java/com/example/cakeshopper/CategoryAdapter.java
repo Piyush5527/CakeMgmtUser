@@ -22,7 +22,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     @NonNull
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_category_model,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_category_model, parent, false);
         return new ViewHolder(view);
     }
 
@@ -30,7 +30,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(@NonNull CategoryAdapter.ViewHolder holder, int position) {
         int icon = categoryModelList.get(position).getCategoryIconLink();
         String name = categoryModelList.get(position).getCategoryName();
-        holder.setCategory(name,position);
+        holder.setCategory(name, position);
         holder.setCategoryIcon(icon);
     }
 
@@ -38,7 +38,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public int getItemCount() {
         return categoryModelList.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView categoryIcon;
         private TextView categoryName;
@@ -51,16 +54,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
         }
 
-        private void setCategoryIcon(int res){
+        private void setCategoryIcon(int res) {
             categoryIcon.setImageResource(res);
         }
 
-        private void setCategory(final String name,final int position){
+        private void setCategory(final String name, final int position) {
             categoryName.setText(name);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(position != 0) {
+                    if (position != 0) {
                         Intent categoryIntent = new Intent(itemView.getContext(), ProductCategoryWise.class);
                         categoryIntent.putExtra("CategoryName", name);
                         itemView.getContext().startActivity(categoryIntent);
