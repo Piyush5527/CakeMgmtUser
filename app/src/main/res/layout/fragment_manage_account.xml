@@ -130,6 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/errorRed"
+            android:drawableLeft="@drawable/ic_baseline_logout_24"
             android:text="Logout" />
 
         <Button
@@ -138,6 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:elevation="5sp"
+            android:drawableLeft="@drawable/ic_baseline_published_with_changes_24"
             android:backgroundTint="@color/successGreen"
             android:text="Update Details" />
     </LinearLayout>

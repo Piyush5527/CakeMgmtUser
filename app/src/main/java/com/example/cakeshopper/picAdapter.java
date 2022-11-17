@@ -32,10 +32,16 @@ public class picAdapter extends RecyclerView.Adapter<picAdapter.PicViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull picAdapter.PicViewHolder holder, int position) {
         PicModel picModel=picModelList.get(position);
-        holder.imageView.setImageBitmap(picModel.getBitmap());
+//        holder.imageView.setImageBitmap(picModel.getBitmap());
 
         Glide.with(context).load(picModelList.get(position).getUrl()).into(holder.imageView);
-//        holder.
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
     @Override
     public int getItemCount() {

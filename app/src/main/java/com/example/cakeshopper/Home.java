@@ -3,8 +3,8 @@ package com.example.cakeshopper;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -18,13 +18,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -179,9 +173,12 @@ public class Home extends Fragment {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent personal = new Intent(getContext(), ProductCategoryWise.class);
-                personal.putExtra("CategoryName", horizontalProductScrollModelList.get(i).getProductTitle());
-                startActivity(personal);
+                ItemsPage itemsPage=new ItemsPage();
+                Bundle args=new Bundle();
+                args.putString("Category",horizontalProductScrollModelList.get(i).getProductTitle().toString());
+                itemsPage.setArguments(args);
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, itemsPage).commit();
             }
         });
 
