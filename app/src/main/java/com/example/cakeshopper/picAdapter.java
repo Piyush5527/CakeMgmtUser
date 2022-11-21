@@ -1,12 +1,16 @@
 package com.example.cakeshopper;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -35,11 +39,23 @@ public class picAdapter extends RecyclerView.Adapter<picAdapter.PicViewHolder>{
 //        holder.imageView.setImageBitmap(picModel.getBitmap());
 
         Glide.with(context).load(picModelList.get(position).getUrl()).into(holder.imageView);
-
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AppCompatActivity activity= (AppCompatActivity) view.getContext();
+//                Toast.makeText(context, "long pressed", Toast.LENGTH_SHORT).show();
+                ViewCakeImage viewCakeImage=new ViewCakeImage();
+                Bundle args=new Bundle();
+                args.putString("ImageId",picModel.getId());
+                viewCakeImage.setArguments(args);
+                activity.getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,viewCakeImage).commit();
+                return true;
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Toast.makeText(context, "Long Press on any image to open it", Toast.LENGTH_SHORT).show();
             }
         });
     }

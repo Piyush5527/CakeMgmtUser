@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,6 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MainActivity extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth firebaseAuth;
+    long backPressed_time;
+    long Period = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        Toast.makeText(this, "Click Once Again to exit", Toast.LENGTH_SHORT).show();
+//        if (backPressed_time + Period > System.currentTimeMillis()) {
+//            super.onBackPressed();
+//        }
+//        backPressed_time = System.currentTimeMillis();
+//    }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener = item -> {
         // By using switch we can easily get

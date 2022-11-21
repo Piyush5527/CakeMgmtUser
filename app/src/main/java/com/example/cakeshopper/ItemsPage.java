@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -44,6 +46,7 @@ public class ItemsPage extends Fragment {
     List<ItemModel> itemModelList;
     ItemsAdapter adapter;
     RecyclerView recyclerView;
+    LinearLayout layout;
 
     public ItemsPage() {
         // Required empty public constructor
@@ -84,6 +87,7 @@ public class ItemsPage extends Fragment {
         db=FirebaseFirestore.getInstance();
         itemModelList=new ArrayList<>();
         recyclerView=view.findViewById(R.id.itemsRecycler);
+        layout=view.findViewById(R.id.layout);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -91,24 +95,31 @@ public class ItemsPage extends Fragment {
         String category=getArguments().getString("Category");
 //        Toast.makeText(getContext(),category , Toast.LENGTH_SHORT).show();
 
-        setItemsOnLoad();
+        setItemsOnLoad(category);
         return view;
     }
 
-    private void setItemsOnLoad() {
-        db.collection("Cake_Details").get()
+    private void setItemsOnLoad(String category) {
+        db.collection("Cake_Details").whereEqualTo("Category",category).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful())
                         {
+                            int cnt=0;
                             for(QueryDocumentSnapshot snapshot:task.getResult())
                             {
+                                cnt++;
 //                                String imageName="hello";
                                 String itemName=String.valueOf(snapshot.getData().get("CakeName"));
                                 String itemPrice=String.valueOf(snapshot.getData().get("Price500")+"/-");
                                 String itemFlavour=String.valueOf(snapshot.getData().get("CakeFlavour"));
-                                itemModelList.add(new ItemModel(itemName,itemPrice,itemFlavour));
+                                String iconUrl=String.valueOf(snapshot.getData().get("ImageUrl"));
+                                itemModelList.add(new ItemModel(itemName,itemPrice,itemFlavour,iconUrl));
+                            }
+                            if(cnt==0)
+                            {
+                                Snackbar.make(layout,"No Items in this category",Snackbar.LENGTH_LONG).show();
                             }
                             adapter=new ItemsAdapter(getContext(),itemModelList);
                             recyclerView.setAdapter(adapter);

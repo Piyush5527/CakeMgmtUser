@@ -138,7 +138,7 @@ public class Cakes extends Fragment {
                 {
                     for(QueryDocumentSnapshot snapshot: task.getResult())
                     {
-                        picModelList.add(new PicModel(snapshot.getData().get("ImageUrl").toString()));
+                        picModelList.add(new PicModel(snapshot.getData().get("ImageUrl").toString(),snapshot.getId()));
                     }
                     picAdapter adapter=new picAdapter(getContext(), picModelList);
                     cakePicsRecycler.setAdapter(adapter);

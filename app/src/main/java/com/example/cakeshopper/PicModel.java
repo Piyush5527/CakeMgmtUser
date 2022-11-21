@@ -5,9 +5,20 @@ import android.graphics.Bitmap;
 public class PicModel {
     Bitmap bitmap;
     String url;
+    String id;
 
-    public PicModel(String url) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+
+    public PicModel(String url, String id) {
         this.url = url;
+        this.id = id;
     }
 
     public String getUrl() {

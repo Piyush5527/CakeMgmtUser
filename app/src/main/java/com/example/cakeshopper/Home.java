@@ -42,7 +42,6 @@ public class Home extends Fragment {
     private CategoryAdapter categoryAdapter;
     private List<CategoryModel> categoryModelsList;
     private FirebaseFirestore db;
-
     /////////Banner Slider
     private ViewPager bannerSliderViewPager;
     private List<SliderModel> sliderModelList;
@@ -177,8 +176,7 @@ public class Home extends Fragment {
                 Bundle args=new Bundle();
                 args.putString("Category",horizontalProductScrollModelList.get(i).getProductTitle().toString());
                 itemsPage.setArguments(args);
-
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, itemsPage).commit();
+                getFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container, itemsPage).commit();
             }
         });
 
