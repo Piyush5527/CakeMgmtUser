@@ -205,7 +205,7 @@ public class ManageAccount extends Fragment {
                         phone.setText(documentSnapshot.getData().get("Phone").toString());
                     }
                 } catch (Exception ex) {
-                    Toast.makeText(getActivity(), ex+"", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(), ex+"", Toast.LENGTH_SHORT).show();
                 }
                 try {
                     if (documentSnapshot.getData().get("Address").toString() != "") {

@@ -11,5 +11,7 @@
     <color name="col2">#9796F0</color>
     <color name="successGreen">#4cd137</color>
     <color name="errorRed">#FF0000</color>
+    <color name="transparent">#00000000</color>
+
 
 </resources>

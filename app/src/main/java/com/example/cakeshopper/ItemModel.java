@@ -4,13 +4,23 @@ public class ItemModel {
     private String name;
     private String flavour;
     private String startPrice;
+    private String id;
     private String url;
 
-    public ItemModel(String name, String startPrice, String flavour, String url) {
+    public ItemModel(String name, String startPrice, String flavour, String url,String id) {
         this.name = name;
         this.flavour = flavour;
         this.startPrice = startPrice;
         this.url = url;
+        this.id=id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUrl() {return url;}

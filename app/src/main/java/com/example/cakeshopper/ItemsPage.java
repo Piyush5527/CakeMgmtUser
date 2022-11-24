@@ -115,7 +115,8 @@ public class ItemsPage extends Fragment {
                                 String itemPrice=String.valueOf(snapshot.getData().get("Price500")+"/-");
                                 String itemFlavour=String.valueOf(snapshot.getData().get("CakeFlavour"));
                                 String iconUrl=String.valueOf(snapshot.getData().get("ImageUrl"));
-                                itemModelList.add(new ItemModel(itemName,itemPrice,itemFlavour,iconUrl));
+                                String id=snapshot.getId();
+                                itemModelList.add(new ItemModel(itemName,itemPrice,itemFlavour,iconUrl,id));
                             }
                             if(cnt==0)
                             {

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -110,7 +111,8 @@ public class Cakes extends Fragment {
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 //        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 //        cakePicsRecycler.setLayoutManager(linearLayoutManager);
-        cakePicsRecycler.setLayoutManager(new GridLayoutManager(getContext(),2));
+        cakePicsRecycler.setLayoutManager(new GridLayoutManager(getContext(),getActivity().getResources().getInteger(R.integer.number_of_grid_items)));
+        cakePicsRecycler.setItemAnimator(new DefaultItemAnimator());
         category = view.findViewById(R.id.category);
         db = FirebaseFirestore.getInstance();
         categoryList.add("Cakes");

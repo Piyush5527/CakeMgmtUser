@@ -2,6 +2,7 @@ package com.example.cakeshopper;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firestore.v1.StructuredQuery;
 
 import java.util.List;
 
@@ -60,7 +63,12 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ItemViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(context, itemModel.getName(), Toast.LENGTH_SHORT).show();
+                AppCompatActivity activity= (AppCompatActivity) view.getContext();
+                OrderProduct orderProduct=new OrderProduct();
+                Bundle args=new Bundle();
+                args.putString("ItemId",itemModel.getId());
+                orderProduct.setArguments(args);
+                activity.getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fragment_container,orderProduct).commit();
             }
         });
     }
