@@ -329,7 +329,9 @@ public class OrderProduct extends Fragment implements DatePickerDialog.OnDateSet
                                             orderDetails.put("OrderTime", orderTime.getText().toString());
                                             orderDetails.put("ExtraPrice", "0");
                                             orderDetails.put("CakeId", itemId);
+                                            orderDetails.put("CakeName", itemName.getText());
                                             orderDetails.put("ImageUrl",generatedFilePath);
+                                            orderDetails.put("UserId",user.getUid());
                                             db.collection("Orders").document().set(orderDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void unused) {
@@ -371,6 +373,8 @@ public class OrderProduct extends Fragment implements DatePickerDialog.OnDateSet
                             orderDetails.put("OrderTime", orderTime.getText().toString());
                             orderDetails.put("ExtraPrice", "0");
                             orderDetails.put("CakeId", itemId);
+                            orderDetails.put("CakeName", itemName.getText());
+                            orderDetails.put("UserId",user.getUid());
                             db.collection("Orders").document().set(orderDetails).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {

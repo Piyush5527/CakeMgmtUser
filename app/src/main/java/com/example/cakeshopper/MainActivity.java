@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             selectedFragment = new ManageAccount();
         } else if (itemId == R.id.AboutStore) {
             selectedFragment = new AboutShop();
+        } else if (itemId == R.id.PreviousOrders) {
+            selectedFragment = new YourOrders();
         }
         // It will help to replace the
         // one fragment to other.

@@ -10,7 +10,9 @@
     <color name="col1">#707da9</color>
     <color name="col2">#9796F0</color>
     <color name="successGreen">#4cd137</color>
+    <color name="successGreen2">#AD7AF168</color>
     <color name="errorRed">#FF0000</color>
+    <color name="errorRed2">#BCF15A5A</color>
     <color name="transparent">#00000000</color>
 
 
